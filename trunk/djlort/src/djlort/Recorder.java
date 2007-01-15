@@ -43,24 +43,9 @@ public class Recorder {
 		}
 	}
 	
-	public static void main(String[] args) throws Exception{
-		
-//		
-//		JComboBox box = new JComboBox();
-//		MidiDevice.Info[] info = MidiSystem.getMidiDeviceInfo();
-//		
-//		for (int i = 0; i < info.length; i++){
-//			MidiDevice midiDevice = MidiSystem.getMidiDevice(info[i]);
-////			box.addItem(midiDevice);
-//			for(Transmitter t: midiDevice.getTransmitters()){
-//				box.addItem(t);
-//			}
-//			
-//		}
-//		
+	public static void main(String[] args) throws Exception{		
 		JFrame frame = new JFrame("Spil mig et stykke");
-//		frame.add(box);	
-//		frame.pack();
+		frame.pack();
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		
