@@ -1,74 +1,73 @@
-#N canvas 479 117 999 676 10;
-#X obj 20 21 vsl 15 128 0 500 0 0 a empty A 0 -8 0 8 -262144 -1 -1
-0 1;
-#X obj 117 24 vsl 15 128 0 1 0 0 s empty S 0 -8 0 8 -262144 -1 -1 7500
+#N canvas 530 330 813 505 10;
+#X obj 20 21 vsl 15 128 20 20000 1 0 a a A 0 -8 0 12 -262144 -1 -1
+9300 1;
+#X obj 72 20 vsl 15 128 0 1 0 0 s s S 0 -8 0 12 -262144 -1 -1 10000
 1;
-#X obj 91 25 vsl 15 128 0 500 0 0 r empty R 0 -8 0 8 -262144 -1 -1
-6000 1;
-#X obj 145 27 vsl 15 128 0 500 0 0 d empty D 0 -8 0 8 -262144 -1 -1
-7200 1;
-#N canvas 579 348 999 676 envelope 0;
-#X obj 80 -19 bng 15 250 50 0 empty kungfu empty 0 -6 0 8 -262144 -1
--1;
-#X obj 33 44 bng 15 250 50 0 empty kungfu empty 0 -6 0 8 -262144 -1
--1;
-#X obj 70 61 r a;
-#X obj 164 107 r s;
-#X obj 150 119 f;
-#X obj 131 55 delay;
-#X obj 294 -8 bng 15 250 50 0 empty shut empty 0 -6 0 8 -262144 -1
--1;
-#X obj 314 7 r d;
-#X obj 300 23 f;
-#X obj 268 33 0;
-#X obj 53 72 f;
-#X obj 209 111 f;
-#X obj 169 200 line~;
-#X obj 157 238 outlet~;
-#X obj 151 12 f;
-#X obj 119 106 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
--1;
-#X obj 223 100 r r;
-#X obj 159 -26 r a;
-#X obj 12 96 nbx 5 14 -1e+37 1e+37 0 0 empty al empty 0 -6 0 10 -262144
--1 -1 0.480315 256;
-#X connect 0 0 14 0;
-#X connect 0 0 5 0;
-#X connect 1 0 10 0;
-#X connect 1 0 18 0;
-#X connect 2 0 10 1;
-#X connect 3 0 4 1;
-#X connect 4 0 12 0;
-#X connect 5 0 4 0;
-#X connect 5 0 11 0;
-#X connect 5 0 15 0;
-#X connect 6 0 9 0;
-#X connect 6 0 8 0;
-#X connect 7 0 8 1;
-#X connect 8 0 12 1;
-#X connect 9 0 12 0;
-#X connect 10 0 12 1;
-#X connect 11 0 12 1;
-#X connect 12 0 13 0;
-#X connect 14 0 5 1;
-#X connect 16 0 11 1;
-#X connect 17 0 14 1;
-#X connect 18 0 12 0;
-#X restore 298 226 pd envelope;
-#X obj 268 167 bng 15 250 50 0 kungfu empty empty 0 -6 0 8 -262144
+#X obj 97 23 vsl 15 128 200 2000 0 0 r r R 0 -8 0 12 -262144 -1 -1
+6500 1;
+#X obj 44 20 vsl 15 128 20 2000 0 0 d d D 0 -8 0 12 -262144 -1 -1 1900
+1;
+#N canvas 636 146 611 387 envelope 1;
+#X obj 37 -4 bng 15 250 50 0 empty \$0-kungfu empty 0 -6 0 8 -262144
 -1 -1;
-#N canvas 574 200 999 676 sound 0;
+#X obj 53 50 r a;
+#X obj 144 92 r s;
+#X obj 135 105 f;
+#X obj 135 65 delay;
+#X obj 253 -3 bng 15 250 50 0 empty \$0-shut empty 0 -6 0 8 -262144
+-1 -1;
+#X obj 274 165 f;
+#X obj 240 162 0;
+#X obj 37 73 f;
+#X obj 202 111 f;
+#X obj 169 200 line~;
+#X obj 175 335 outlet~;
+#X obj 159 29 f;
+#X obj 115 103 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#X obj 173 -1 r a;
+#X obj 4 72 1;
+#X obj 204 83 r d;
+#X obj 290 155 r r;
+#X obj 218 40 2e+09;
+#X connect 0 0 12 0;
+#X connect 0 0 4 0;
+#X connect 0 0 8 0;
+#X connect 0 0 15 0;
+#X connect 1 0 8 1;
+#X connect 2 0 3 1;
+#X connect 3 0 10 0;
+#X connect 4 0 13 0;
+#X connect 4 0 9 0;
+#X connect 4 0 3 0;
+#X connect 5 0 6 0;
+#X connect 5 0 7 0;
+#X connect 5 0 4 0;
+#X connect 5 0 18 0;
+#X connect 6 0 10 1;
+#X connect 7 0 10 0;
+#X connect 8 0 10 1;
+#X connect 9 0 10 1;
+#X connect 10 0 11 0;
+#X connect 12 0 4 1;
+#X connect 14 0 12 1;
+#X connect 15 0 10 0;
+#X connect 16 0 9 1;
+#X connect 17 0 6 1;
+#X connect 18 0 4 1;
+#X restore 298 226 pd envelope;
+#N canvas 574 200 999 676 sound 1;
 #X obj 132 225 osc~;
 #X obj 87 261 outlet~;
 #X obj 224 146 osc~;
 #X obj 213 -7 vsl 15 128 0 100 0 0 empty empty empty 0 -8 0 8 -262144
--1 -1 2400 1;
+-1 -1 4200 1;
 #X obj 268 -5 vsl 15 128 0 10 0 0 empty empty empty 0 -8 0 8 -262144
--1 -1 12700 1;
+-1 -1 8800 1;
 #X obj 249 180 *~;
 #X obj 160 195 +~;
 #X obj 83 25 nbx 5 14 -1e+37 1e+37 0 0 empty tone empty 0 -6 0 10 -262144
--1 -1 0 256;
+-1 -1 65 256;
 #X obj 103 84 mtof;
 #X obj 74 116 mtof;
 #X obj 78 178 osc~;
@@ -87,78 +86,50 @@
 #X connect 11 0 8 0;
 #X restore 393 226 pd sound;
 #X obj 353 278 *~;
-#X obj 254 99 key;
-#X obj 300 96 keyup;
-#X obj 301 158 bng 15 250 50 0 shut empty empty 0 -6 0 8 -262144 -1
--1;
-#X obj 319 357 delwrite~ line 1000;
 #X obj 259 327 *~ 0.5;
-#X obj 379 29 vsl 15 128 0 100 0 0 volume empty Volume 0 -8 0 8 -262144
--1 -1 10600 1;
-#X obj 425 29 vsl 15 128 0 1000 0 0 delay empty Delay 0 -8 0 8 -262144
--1 -1 5200 1;
-#N canvas 129 55 999 676 output 0;
-#X obj 70 531 dac~;
-#X obj 67 505 *~;
-#X obj 148 467 nbx 5 14 -1e+37 1e+37 0 0 empty volume empty 0 -6 0
-10 -262144 -1 -1 83.4646 256;
-#X obj 147 486 dbtorms;
-#X obj 53 446 delread~ line 0;
-#X obj 70 531 dac~;
-#X obj 67 505 *~;
-#X obj 148 467 nbx 5 14 -1e+37 1e+37 0 0 empty volume empty 0 -6 0
-10 -262144 -1 -1 83.4646 256;
-#X obj 147 486 dbtorms;
-#X obj 53 446 delread~ line 0;
-#X obj 41 127 delread~ line 0;
-#X obj 76 178 *~;
-#X obj 115 387 nbx 5 14 -1e+37 1e+37 0 0 empty volume empty 0 -6 0
-10 -262144 -1 -1 83.4646 256;
-#X obj 115 387 nbx 5 14 -1e+37 1e+37 0 0 empty volume empty 0 -6 0
-10 -262144 -1 -1 83.4646 256;
-#X obj 245 143 nbx 5 14 -1e+37 1e+37 0 0 empty volume empty 0 -6 0
-10 -262144 -1 -1 83.4646 256;
-#X obj 78 247 dac~;
-#X obj 160 172 dbtopow;
-#X obj 149 447 hip~;
-#X obj 77 207 hip~ 20;
-#X connect 1 0 0 0;
-#X connect 2 0 3 0;
-#X connect 3 0 1 1;
-#X connect 4 0 1 0;
-#X connect 6 0 5 0;
-#X connect 7 0 8 0;
-#X connect 8 0 6 1;
-#X connect 9 0 6 0;
-#X connect 10 0 11 0;
-#X connect 11 0 18 0;
-#X connect 14 0 16 0;
-#X connect 16 0 11 1;
-#X connect 18 0 15 0;
-#X connect 18 0 15 1;
-#X restore 67 367 pd output;
-#X obj 245 188 nbx 5 14 -1e+37 1e+37 0 0 tone empty empty 0 -6 0 10
--262144 -1 -1 0 256;
+#X obj 361 28 vsl 15 128 0 100 0 0 \$0-volume \$0-volume Volume 0 -8
+0 12 -262144 -1 -1 7493 1;
+#X obj 425 29 vsl 15 128 0 1000 0 0 delay empty Delay 0 -8 0 12 -262144
+-1 -1 0 1;
 #X obj 233 262 r delay;
-#X obj 211 300 delread~ line;
-#X obj 44 19 vsl 15 128 0 1 0 0 al empty Alevel 0 -8 0 8 -262144 -1
--1 6100 1;
-#X obj 603 70 netreceive 3000 1;
-#X obj 602 118 unpack s f;
-#X obj 583 162 select on off;
-#X obj 685 158 - 12;
-#X connect 4 0 7 0;
-#X connect 6 0 7 1;
-#X connect 7 0 11 0;
-#X connect 8 0 5 0;
-#X connect 8 0 16 0;
-#X connect 9 0 10 0;
-#X connect 12 0 11 0;
-#X connect 17 0 18 0;
-#X connect 18 0 12 0;
-#X connect 20 0 21 0;
-#X connect 21 0 22 0;
-#X connect 21 1 23 0;
-#X connect 22 0 5 0;
-#X connect 22 1 10 0;
-#X connect 23 0 16 0;
+#X obj 543 77 inlet;
+#X obj 546 108 unpack f f;
+#X obj 672 197 nbx 5 14 -1e+37 1e+37 0 0 \$0-volume empty volume 0
+-6 0 10 -262144 -1 -1 59 256;
+#X obj 606 159 select 0;
+#X obj 609 234 bng 15 250 50 0 \$0-shut empty noteoff 0 -6 0 12 -262144
+-1 -1;
+#X obj 652 248 bng 15 250 50 0 \$0-kungfu empty noteon 0 -6 0 12 -262144
+-1 -1;
+#X obj 543 145 nbx 5 14 -1e+37 1e+37 0 0 tone empty tone 0 -6 0 10
+-262144 -1 -1 65 256;
+#X obj 246 78 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#X obj 68 241 *~;
+#X obj 88 216 nbx 5 14 -1e+37 1e+37 0 0 empty \$0-volume Vol 0 -6 0
+10 -262144 -1 -1 59 256;
+#X obj 69 270 hip~ 20;
+#X obj 211 300 delread~ \$0-line;
+#X obj 319 358 delwrite~ \$0-line 1000;
+#X obj 33 190 delread~ \$0-line 0;
+#X obj 237 131 print;
+#X msg 277 102 \$0-d;
+#X obj 60 312 throw~ sum;
+#X connect 4 0 6 0;
+#X connect 5 0 6 1;
+#X connect 6 0 23 0;
+#X connect 7 0 23 0;
+#X connect 10 0 22 0;
+#X connect 11 0 12 0;
+#X connect 12 0 17 0;
+#X connect 12 1 14 0;
+#X connect 14 0 15 0;
+#X connect 14 1 13 0;
+#X connect 14 1 16 0;
+#X connect 18 0 25 0;
+#X connect 19 0 21 0;
+#X connect 20 0 19 1;
+#X connect 21 0 27 0;
+#X connect 22 0 7 0;
+#X connect 24 0 19 0;
+#X connect 26 0 25 0;
