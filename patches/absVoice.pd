@@ -1,17 +1,127 @@
-#N canvas 1839 365 450 300 10;
-#X obj 84 268 throw~ a;
-#X obj 91 169 osc~;
-#X obj 146 146 f;
-#X obj 99 222 *~;
-#X obj 81 107 mtof;
-#X obj 53 37 inlet;
-#X obj 88 72 unpack f f;
-#X obj 134 188 *~ 0.008;
-#X connect 1 0 3 0;
-#X connect 2 0 7 0;
-#X connect 3 0 0 0;
-#X connect 4 0 1 0;
+#N canvas 1476 19 728 511 10;
+#X obj 130 388 *~;
+#X obj 160 170 inlet;
+#X obj 160 202 unpack f f;
+#X obj 130 436 throw~ sum;
+#X obj 282 277 nbx 5 14 -1e+37 1e+37 0 0 empty empty volume 0 -6 0
+10 -262144 -1 -1 0 256;
+#X obj 225 237 select 0;
+#X obj 210 279 bng 15 250 50 0 \$0-shut empty noteoff 0 -6 0 12 -262144
+-1 -1;
+#X obj 316 324 bng 15 250 50 0 \$0-kungfu empty noteon 0 -6 0 12 -262144
+-1 -1;
+#X obj 152 239 nbx 5 14 -1e+37 1e+37 0 0 \$0-tone empty tone 0 -6 0
+10 -262144 -1 -1 0 256;
+#X obj 476 -7 vsl 15 128 0 1 0 1 s s S 0 -8 0 12 -225280 -90881 -1
+0 1;
+#X obj 503 -4 vsl 15 128 200 2000 0 1 r r R 0 -8 0 12 -261689 -90881
+-1 0 1;
+#X obj 448 -8 vsl 15 128 20 2000 0 1 d d D 0 -8 0 12 -228992 -42246
+-1 0 1;
+#X obj 428 -9 vsl 15 128 20 20000 1 1 a a A 0 -8 0 12 -257472 -90133
+-1 0 0;
+#N canvas 1518 291 424 348 sound 0;
+#X obj 132 225 osc~;
+#X obj 87 261 outlet~;
+#X obj 172 113 osc~;
+#X obj 225 -35 vsl 15 128 1 50 0 1 modulator-freq modulator-freq freq
+0 -8 0 10 -262131 -143491 -1 0 0;
+#X obj 257 -34 vsl 15 128 0 20 0 1 modulator-amount modulator-amount
+amount 0 -8 0 10 -225280 -355 -1 4000 1;
+#X obj 173 141 *~;
+#X obj 69 160 +~;
+#X obj 83 25 nbx 5 14 -1e+37 1e+37 0 0 empty \$0-tone Tone 0 -6 0 10
+-262144 -1 -1 0 256;
+#X obj 103 84 mtof;
+#X obj 74 116 mtof;
+#X obj 80 205 osc~;
+#X obj 134 54 + 12;
+#X obj 133 166 +~;
+#X obj 251 154 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -6 0 10
+-262144 -1 -1 0 256;
+#X connect 0 0 1 0;
+#X connect 2 0 5 0;
+#X connect 3 0 2 0;
+#X connect 3 0 13 0;
+#X connect 4 0 5 1;
+#X connect 5 0 6 1;
+#X connect 5 0 12 1;
+#X connect 6 0 10 0;
+#X connect 7 0 9 0;
+#X connect 7 0 11 0;
+#X connect 8 0 12 0;
+#X connect 9 0 6 0;
+#X connect 10 0 1 0;
+#X connect 11 0 8 0;
+#X connect 12 0 0 0;
+#X restore 38 76 pd sound;
+#N canvas 584 338 356 274 envelope 0;
+#X obj 130 183 vline~;
+#X obj 81 50 r a;
+#X obj 67 65 f;
+#X obj 131 48 r s;
+#X obj 122 61 f;
+#X obj 173 54 f;
+#X obj 189 42 r d;
+#X obj 81 5 bng 15 250 50 0 empty \$0-kungfu noteon 0 -6 0 10 -262144
+-1 -1;
+#X obj 237 16 bng 15 250 50 0 empty \$0-shut noteoff 0 -6 0 10 -262144
+-1 -1;
+#X obj 35 72 1;
+#X obj 247 68 f;
+#X obj 213 65 0;
+#X obj 263 58 r r;
+#X obj 238 137 pack f f;
+#X obj 78 139 pack f f;
+#X obj 147 139 pack f f f;
+#X obj 136 224 outlet~;
+#X connect 0 0 16 0;
+#X connect 1 0 2 1;
+#X connect 2 0 14 1;
+#X connect 2 0 15 2;
+#X connect 3 0 4 1;
+#X connect 4 0 15 0;
+#X connect 5 0 15 1;
+#X connect 6 0 5 1;
+#X connect 7 0 2 0;
+#X connect 7 0 5 0;
+#X connect 7 0 9 0;
+#X connect 7 0 4 0;
+#X connect 8 0 10 0;
+#X connect 8 0 11 0;
+#X connect 9 0 14 0;
+#X connect 10 0 13 1;
+#X connect 11 0 13 0;
+#X connect 12 0 10 1;
+#X connect 13 0 0 0;
+#X connect 14 0 0 0;
+#X connect 15 0 0 0;
+#X restore 103 281 pd envelope;
+#X obj 175 338 *~;
+#N canvas 552 337 450 300 wind 0;
+#X obj 139 224 outlet~;
+#X obj 124 105 noise~;
+#X obj 154 170 bp~;
+#X obj 207 96 nbx 5 14 -1e+37 1e+37 0 0 empty \$0-tone Tone 0 -6 0
+10 -262144 -1 -1 0 256;
+#X obj 225 135 nbx 5 14 -1e+37 1e+37 0 1 q q empty 0 -6 0 10 -262144
+-1 -1 44 256;
+#X connect 1 0 2 0;
+#X connect 2 0 0 0;
+#X connect 3 0 2 1;
+#X connect 4 0 2 2;
+#X restore 37 315 pd wind;
+#X obj 131 410 *~ 0.03;
+#X connect 0 0 17 0;
+#X connect 1 0 2 0;
+#X connect 2 0 8 0;
+#X connect 2 1 5 0;
+#X connect 4 0 15 1;
+#X connect 4 0 7 0;
 #X connect 5 0 6 0;
-#X connect 6 0 4 0;
-#X connect 6 1 2 0;
-#X connect 7 0 3 1;
+#X connect 5 1 4 0;
+#X connect 13 0 0 0;
+#X connect 14 0 15 0;
+#X connect 15 0 0 1;
+#X connect 16 0 0 0;
+#X connect 17 0 3 0;

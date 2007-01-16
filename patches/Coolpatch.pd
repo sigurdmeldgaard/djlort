@@ -1,73 +1,67 @@
-#N canvas 530 330 813 505 10;
+#N canvas 659 335 813 505 10;
 #X obj 20 21 vsl 15 128 20 20000 1 0 a a A 0 -8 0 12 -262144 -1 -1
-9300 1;
-#X obj 72 20 vsl 15 128 0 1 0 0 s s S 0 -8 0 12 -262144 -1 -1 10000
+2600 1;
+#X obj 72 20 vsl 15 128 0 1 0 0 s s S 0 -8 0 12 -262144 -1 -1 12700
 1;
 #X obj 97 23 vsl 15 128 200 2000 0 0 r r R 0 -8 0 12 -262144 -1 -1
-6500 1;
-#X obj 44 20 vsl 15 128 20 2000 0 0 d d D 0 -8 0 12 -262144 -1 -1 1900
+2700 1;
+#X obj 44 20 vsl 15 128 20 2000 0 0 d d D 0 -8 0 12 -262144 -1 -1 12700
 1;
-#N canvas 636 146 611 387 envelope 1;
-#X obj 37 -4 bng 15 250 50 0 empty \$0-kungfu empty 0 -6 0 8 -262144
+#N canvas 108 300 611 387 envelope 1;
+#X obj 130 183 vline~;
+#X obj 81 50 r a;
+#X obj 67 65 f;
+#X obj 131 48 r s;
+#X obj 122 61 f;
+#X obj 173 54 f;
+#X obj 189 42 r d;
+#X obj 81 5 bng 15 250 50 0 empty \$0-kungfu empty 0 -6 0 8 -262144
 -1 -1;
-#X obj 53 50 r a;
-#X obj 144 92 r s;
-#X obj 135 105 f;
-#X obj 135 65 delay;
-#X obj 253 -3 bng 15 250 50 0 empty \$0-shut empty 0 -6 0 8 -262144
+#X obj 237 16 bng 15 250 50 0 empty \$0-shut empty 0 -6 0 8 -262144
 -1 -1;
-#X obj 274 165 f;
-#X obj 240 162 0;
-#X obj 37 73 f;
-#X obj 202 111 f;
-#X obj 169 200 line~;
-#X obj 175 335 outlet~;
-#X obj 159 29 f;
-#X obj 115 103 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
--1;
-#X obj 173 -1 r a;
-#X obj 4 72 1;
-#X obj 204 83 r d;
-#X obj 290 155 r r;
-#X obj 218 40 2e+09;
-#X connect 0 0 12 0;
-#X connect 0 0 4 0;
-#X connect 0 0 8 0;
-#X connect 0 0 15 0;
-#X connect 1 0 8 1;
-#X connect 2 0 3 1;
-#X connect 3 0 10 0;
-#X connect 4 0 13 0;
-#X connect 4 0 9 0;
-#X connect 4 0 3 0;
-#X connect 5 0 6 0;
-#X connect 5 0 7 0;
-#X connect 5 0 4 0;
-#X connect 5 0 18 0;
-#X connect 6 0 10 1;
-#X connect 7 0 10 0;
-#X connect 8 0 10 1;
-#X connect 9 0 10 1;
-#X connect 10 0 11 0;
-#X connect 12 0 4 1;
-#X connect 14 0 12 1;
-#X connect 15 0 10 0;
-#X connect 16 0 9 1;
-#X connect 17 0 6 1;
-#X connect 18 0 4 1;
+#X obj 35 72 1;
+#X obj 247 68 f;
+#X obj 213 65 0;
+#X obj 263 58 r r;
+#X obj 238 137 pack f f;
+#X obj 78 139 pack f f;
+#X obj 147 139 pack f f f;
+#X obj 136 224 outlet~;
+#X obj 47 201 print ud;
+#X connect 0 0 16 0;
+#X connect 1 0 2 1;
+#X connect 2 0 14 1;
+#X connect 2 0 15 2;
+#X connect 3 0 4 1;
+#X connect 4 0 15 0;
+#X connect 5 0 15 1;
+#X connect 6 0 5 1;
+#X connect 7 0 2 0;
+#X connect 7 0 5 0;
+#X connect 7 0 9 0;
+#X connect 7 0 4 0;
+#X connect 8 0 10 0;
+#X connect 8 0 11 0;
+#X connect 9 0 14 0;
+#X connect 10 0 13 1;
+#X connect 11 0 13 0;
+#X connect 12 0 10 1;
+#X connect 13 0 0 0;
+#X connect 14 0 0 0;
+#X connect 14 0 17 0;
 #X restore 298 226 pd envelope;
-#N canvas 574 200 999 676 sound 1;
+#N canvas 574 200 999 676 sound 0;
 #X obj 132 225 osc~;
 #X obj 87 261 outlet~;
 #X obj 224 146 osc~;
 #X obj 213 -7 vsl 15 128 0 100 0 0 empty empty empty 0 -8 0 8 -262144
--1 -1 4200 1;
+-1 -1 0 1;
 #X obj 268 -5 vsl 15 128 0 10 0 0 empty empty empty 0 -8 0 8 -262144
--1 -1 8800 1;
+-1 -1 0 1;
 #X obj 249 180 *~;
 #X obj 160 195 +~;
 #X obj 83 25 nbx 5 14 -1e+37 1e+37 0 0 empty tone empty 0 -6 0 10 -262144
--1 -1 65 256;
+-1 -1 47 256;
 #X obj 103 84 mtof;
 #X obj 74 116 mtof;
 #X obj 78 178 osc~;
@@ -88,48 +82,41 @@
 #X obj 353 278 *~;
 #X obj 259 327 *~ 0.5;
 #X obj 361 28 vsl 15 128 0 100 0 0 \$0-volume \$0-volume Volume 0 -8
-0 12 -262144 -1 -1 7493 1;
-#X obj 425 29 vsl 15 128 0 1000 0 0 delay empty Delay 0 -8 0 12 -262144
--1 -1 0 1;
+0 12 -262144 -1 -1 11684 1;
+#X obj 423 31 vsl 15 128 0 1000 0 0 delay empty Delay 0 -8 0 12 -262144
+-1 -1 4600 1;
 #X obj 233 262 r delay;
 #X obj 543 77 inlet;
 #X obj 546 108 unpack f f;
 #X obj 672 197 nbx 5 14 -1e+37 1e+37 0 0 \$0-volume empty volume 0
--6 0 10 -262144 -1 -1 59 256;
+-6 0 10 -262144 -1 -1 92 256;
 #X obj 606 159 select 0;
 #X obj 609 234 bng 15 250 50 0 \$0-shut empty noteoff 0 -6 0 12 -262144
 -1 -1;
 #X obj 652 248 bng 15 250 50 0 \$0-kungfu empty noteon 0 -6 0 12 -262144
 -1 -1;
 #X obj 543 145 nbx 5 14 -1e+37 1e+37 0 0 tone empty tone 0 -6 0 10
--262144 -1 -1 65 256;
-#X obj 246 78 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
--1;
+-262144 -1 -1 47 256;
 #X obj 68 241 *~;
 #X obj 88 216 nbx 5 14 -1e+37 1e+37 0 0 empty \$0-volume Vol 0 -6 0
-10 -262144 -1 -1 59 256;
+10 -262144 -1 -1 92 256;
 #X obj 69 270 hip~ 20;
 #X obj 211 300 delread~ \$0-line;
 #X obj 319 358 delwrite~ \$0-line 1000;
 #X obj 33 190 delread~ \$0-line 0;
-#X obj 237 131 print;
-#X msg 277 102 \$0-d;
-#X obj 60 312 throw~ sum;
+#X obj 352 328 throw~ sum;
 #X connect 4 0 6 0;
 #X connect 5 0 6 1;
-#X connect 6 0 23 0;
-#X connect 7 0 23 0;
-#X connect 10 0 22 0;
+#X connect 6 0 24 0;
+#X connect 7 0 22 0;
+#X connect 10 0 21 0;
 #X connect 11 0 12 0;
 #X connect 12 0 17 0;
 #X connect 12 1 14 0;
 #X connect 14 0 15 0;
 #X connect 14 1 13 0;
 #X connect 14 1 16 0;
-#X connect 18 0 25 0;
-#X connect 19 0 21 0;
-#X connect 20 0 19 1;
-#X connect 21 0 27 0;
-#X connect 22 0 7 0;
-#X connect 24 0 19 0;
-#X connect 26 0 25 0;
+#X connect 18 0 20 0;
+#X connect 19 0 18 1;
+#X connect 21 0 7 0;
+#X connect 23 0 18 0;
