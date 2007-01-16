@@ -1,7 +1,6 @@
 package djlort;
 import javax.sound.midi.*;
 import javax.swing.*;
-import java.awt.*;
 import java.util.List;
 
 public class Recorder {
@@ -30,11 +29,7 @@ public class Recorder {
 		          System.out.println ();
 		        }
 
-		        Transmitter t = inputPort.getTransmitter ();
-
-			
-			
-			// Just get the first MIDI input port
+		        // Just get the first MIDI input port
 			Transmitter input = MidiSystem.getTransmitter();
 			input.setReceiver(new Sender(protocol));
 		} catch (MidiUnavailableException e) {
@@ -52,9 +47,9 @@ public class Recorder {
 		
 
 		String host = "10.11.20.170";
-		Protocol tcp = new TcpProtocol(host,8000);
-		Protocol udp = new UdpProtocol(host,3000);
-		new Recorder(udp);
+		Protocol p;
+		p = new UdpProtocol(host,3000);
+		new Recorder(p);
 		
 	}
 }
