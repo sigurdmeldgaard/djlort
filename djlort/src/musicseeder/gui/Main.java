@@ -50,7 +50,7 @@ public class Main{
 	}
 
 	public void playSeq(Sequence seq) throws Exception{
-		Sequencer s = sequencer;
+		Sequencer s = sequencer; // Just to debug
 		sequencer.close();
 		sequencer.open();
 		sequencer.setTempoInBPM(120);

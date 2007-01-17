@@ -33,11 +33,14 @@ public class Sender implements Receiver{
 		case ShortMessage.NOTE_OFF:
 			volume = 0;
 			break;
+		case ShortMessage.CONTROL_CHANGE:
+			return "control "+msg.getChannel()+" "+msg.getData1()+" "+
+			   msg.getData2()+" "+event.getTick()+"\n";
 		default: return null; //assert false : "We only like note on and note off";
 		}
 		int height = msg.getData1();
 		
-		String s = msg.getChannel() + " "
+		String s = "note "+msg.getChannel() + " "
 		 + height + " " + volume + " " + event.getTick() + "\n";
 		return s;
 	}
