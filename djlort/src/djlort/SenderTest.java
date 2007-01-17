@@ -15,7 +15,6 @@ public class SenderTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		assertEquals(Sender.eventToString(new MidiEvent(msg,42)), "0 40 10 42");
 	}
 
 }

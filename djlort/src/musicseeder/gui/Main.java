@@ -354,7 +354,7 @@ public class Main{
 	}
 	public static void main(String[] args){
 		Main m=new Main();
-		JFrame frame = new JFrame("Lalrglad");
+		JFrame frame = new JFrame("MusicSeeder");
 
 		frame.addWindowListener(new WindowAdapter () {
 			public void windowClosing(WindowEvent e) {
