@@ -1,7 +1,7 @@
-#N canvas 448 97 999 676 10;
+#N canvas 25 92 999 676 10;
 #X obj 110 254 print;
 #X obj 168 190 netreceive 3000 1;
-#X obj 322 419 nbx 5 14 -1e+37 1e+37 0 1 modulator-freq freq-before
+#X obj 320 419 nbx 5 14 -1e+37 1e+37 0 1 modulator-freq freq-before
 freq 0 -6 0 10 -262144 -1 -1 41 256;
 #X obj 320 387 nbx 5 14 -1e+37 1e+37 0 1 modulator-amount amount-before
 amount 0 -6 0 10 -262144 -1 -1 0 256;
@@ -15,16 +15,16 @@ amount 0 -6 0 10 -262144 -1 -1 0 256;
 -1 0 0;
 #X obj 283 344 bng 20 250 50 0 empty empty RESET -10 -6 0 10 -262144
 -262144 -1;
-#X obj 321 457 nbx 5 14 10 2000 1 1 q q-before Q 0 -6 0 10 -262144
+#X obj 319 452 nbx 5 14 10 2000 1 1 q q-before Q 0 -6 0 10 -262144
 -1 -1 1281.81 256;
-#N canvas 554 411 999 676 output 0;
+#N canvas 25 92 999 676 output 0;
 #X obj 95 -27 dac~;
 #X obj 95 -52 *~ 0.05;
 #X obj 94 -78 catch~ sum;
 #X connect 1 0 0 0;
 #X connect 2 0 1 0;
 #X coords 0 0 1 1 100 100 0;
-#X restore 312 550 pd output;
+#X restore 308 549 pd output;
 #X obj 212 244 route note control;
 #N canvas 0 0 999 676 control 0;
 #X obj 209 128 pack f f f f;
@@ -48,13 +48,19 @@ amount 0 -6 0 10 -262144 -1 -1 0 256;
 #X connect 7 0 5 0;
 #X connect 7 1 2 0;
 #X restore 273 299 pd control;
-#N canvas 0 0 999 676 notes 1;
+#N canvas 0 0 999 676 notes 0;
 #X obj 75 116 unpack f f f f;
 #X obj 72 162 pack f f;
 #X obj 72 255 pack f f f;
 #X obj 72 296 route 1 2 3 4 5 6 7 8 9 10;
 #X obj 73 347 absVoice;
 #X obj 72 215 poly 10 1;
+#X obj 91 65 inlet;
+#X text 308 113 Vi ignorerer foreloebigt 1 og sidste input (channel
+og timestamp);
+#X text 305 209 Her allokeres stemmer med voice-stealing;
+#X text 305 299 Her routes pitch/velocity til den rette stemmegenerator
+;
 #X obj 72 482 absVoice;
 #X obj 73 401 absVoice;
 #X obj 73 374 absVoice;
@@ -64,26 +70,31 @@ amount 0 -6 0 10 -262144 -1 -1 0 256;
 #X obj 73 537 absVoice;
 #X obj 75 566 absVoice;
 #X obj 77 590 absVoice;
-#X obj 91 65 inlet;
 #X connect 0 1 1 0;
 #X connect 0 2 1 1;
 #X connect 1 0 5 0;
 #X connect 2 0 3 0;
 #X connect 3 0 4 0;
-#X connect 3 1 8 0;
-#X connect 3 2 7 0;
-#X connect 3 3 9 0;
-#X connect 3 4 10 0;
-#X connect 3 5 6 0;
-#X connect 3 6 11 0;
-#X connect 3 7 12 0;
-#X connect 3 8 13 0;
-#X connect 3 9 14 0;
+#X connect 3 1 12 0;
+#X connect 3 2 11 0;
+#X connect 3 3 13 0;
+#X connect 3 4 14 0;
+#X connect 3 5 10 0;
+#X connect 3 6 15 0;
+#X connect 3 7 16 0;
+#X connect 3 8 17 0;
+#X connect 3 9 18 0;
 #X connect 5 0 2 0;
 #X connect 5 1 2 1;
 #X connect 5 2 2 2;
-#X connect 15 0 0 0;
+#X connect 6 0 0 0;
 #X restore 206 298 pd notes;
+#X text 413 243 Vi arbejder med to typer beskeder \, note(on/off) og
+kontrolbeskeder \, disse behandles i hver sin subpatch;
+#X text 412 336 Hvis man aendrer i absVoice (stemmegeneratoren) og
+gemmer skal man helst resette ved at trykke paa denne bang!;
+#X text 413 184 Her modtager vi beskeder via netvaerket \, foerst kommer
+portnr \, saa tcp/udp (0/1);
 #X connect 1 0 0 0;
 #X connect 1 0 11 0;
 #X connect 8 0 2 0;
