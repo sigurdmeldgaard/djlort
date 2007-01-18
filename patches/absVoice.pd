@@ -1,52 +1,18 @@
 #N canvas 25 92 999 676 10;
-#X obj 130 388 *~;
-#X obj 160 170 inlet;
-#X obj 160 202 unpack f f;
-#X obj 130 436 throw~ sum;
-#X obj 282 277 nbx 5 14 -1e+37 1e+37 0 0 empty empty volume 0 -6 0
-10 -262144 -1 -1 120 256;
-#X obj 225 237 select 0;
-#X obj 210 279 bng 15 250 50 0 \$0-shut empty noteoff 0 -6 0 12 -262144
+#X obj 59 414 *~;
+#X obj 68 43 inlet;
+#X obj 68 75 unpack f f;
+#X obj 59 478 throw~ sum;
+#X obj 190 150 nbx 5 14 -1e+37 1e+37 0 0 empty empty volume 0 -6 0
+10 -262144 -1 -1 0 256;
+#X obj 133 110 select 0;
+#X obj 118 150 bng 15 250 50 0 \$0-shut empty noteoff 0 -6 0 12 -262144
 -1 -1;
-#X obj 316 324 bng 15 250 50 0 \$0-kungfu empty noteon 0 -6 0 12 -262144
+#X obj 201 189 bng 15 250 50 0 \$0-kungfu empty noteon 0 -6 0 12 -262144
 -1 -1;
-#X obj 152 239 nbx 5 14 -1e+37 1e+37 0 0 \$0-tone empty tone 0 -6 0
-10 -262144 -1 -1 74 256;
-#N canvas 600 420 999 676 sound 0;
-#X obj 132 225 osc~;
-#X obj 87 261 outlet~;
-#X obj 172 113 osc~;
-#X obj 173 141 *~;
-#X obj 69 160 +~;
-#X obj 83 25 nbx 5 14 -1e+37 1e+37 0 0 empty \$0-tone Tone 0 -6 0 10
--262144 -1 -1 74 256;
-#X obj 103 84 mtof;
-#X obj 74 116 mtof;
-#X obj 80 205 osc~;
-#X obj 134 54 + 12;
-#X obj 133 166 +~;
-#X obj 185 31 f;
-#X obj 187 -7 r modulator-freq;
-#X obj 245 40 r modulator-amount;
-#X obj 244 76 f;
-#X connect 0 0 1 0;
-#X connect 2 0 3 0;
-#X connect 3 0 4 1;
-#X connect 3 0 10 1;
-#X connect 4 0 8 0;
-#X connect 5 0 7 0;
-#X connect 5 0 9 0;
-#X connect 6 0 10 0;
-#X connect 7 0 4 0;
-#X connect 8 0 1 0;
-#X connect 9 0 6 0;
-#X connect 10 0 0 0;
-#X connect 11 0 2 0;
-#X connect 12 0 11 0;
-#X connect 13 0 14 0;
-#X connect 14 0 3 1;
-#X restore 22 280 pd sound;
-#N canvas 584 338 356 274 envelope 0;
+#X obj 60 112 nbx 5 14 -1e+37 1e+37 0 0 \$0-tone empty tone 0 -6 0
+10 -262144 -1 -1 0 256;
+#N canvas 584 338 999 676 envelope 0;
 #X obj 130 183 vline~;
 #X obj 81 50 r a;
 #X obj 67 65 f;
@@ -87,29 +53,34 @@
 #X connect 13 0 0 0;
 #X connect 14 0 0 0;
 #X connect 15 0 0 0;
-#X restore 103 281 pd envelope;
-#X obj 175 338 *~;
-#X obj 131 410 *~ 0.03;
+#X restore 71 230 pd envelope;
+#X obj 138 288 *~;
+#X obj 60 443 *~ 0.03;
 #N canvas 25 92 999 676 stoej 1;
-#X obj 95 76 noise~;
-#X obj 117 314 outlet~;
-#X obj 131 114 nbx 5 14 -1e+37 1e+37 0 0 empty \$0-tone empty 0 -6
-0 10 -262144 -1 -1 74 256;
-#X obj 144 145 mtof;
-#X obj 211 184 nbx 5 14 -1e+37 1e+37 0 0 empty q empty 0 -6 0 10 -262144
--1 -1 1431.22 256;
-#X obj 139 260 *~;
-#X obj 212 212 + 1;
+#X obj 67 91 noise~;
+#X obj 89 329 outlet~;
+#X obj 103 129 nbx 5 14 -1e+37 1e+37 0 0 empty \$0-tone empty 0 -6
+0 10 -262144 -1 -1 0 256;
+#X obj 116 160 mtof;
+#X obj 451 122 nbx 5 14 -1e+37 1e+37 0 0 empty q Q 0 -6 0 12 -262144
+-1 -1 1281.81 256;
+#X obj 111 275 *~;
+#X obj 452 150 + 1;
 #X obj 311 85 osc~;
 #X obj 312 113 *~;
-#X obj 148 174 +~;
+#X obj 120 189 +~;
 #X obj 304 53 f;
 #X obj 306 15 r modulator-freq;
 #X obj 358 50 r modulator-amount;
 #X obj 357 86 f;
-#X obj 137 216 vcf~;
-#X obj 200 236 sqrt;
-#X obj 138 284 *~ 3;
+#X obj 109 231 vcf~;
+#X obj 440 174 sqrt;
+#X obj 110 299 *~ 3;
+#X text 530 125 Jo lavere Q-vaerdi til bandpassfilteret jo kraftigere
+signal \, tilsyneladende virker det udenmaerket at skalere med kvadratroden
+af Q-vaerdien for at faa ensartet lydstyrke for alle Q.;
+#X text 335 223 Vi bruger vcf~ istedet for bp~ for at kunne frekvensmodulere
+tonen;
 #X connect 0 0 14 0;
 #X connect 2 0 3 0;
 #X connect 3 0 9 0;
@@ -127,16 +98,24 @@
 #X connect 14 0 5 0;
 #X connect 15 0 5 1;
 #X connect 16 0 1 0;
-#X restore 19 306 pd stoej;
-#X connect 0 0 12 0;
+#X restore 21 366 pd stoej;
+#X text 282 38 Her kommer en besked paa formen: "midi-pitch velocity"
+;
+#X text 284 474 Alle stemmers bidrag til lyden samles i variablen sum
+\, som fanges i pd output;
+#X text 284 435 For ikke at overstyre er det noedvendigt at daempe
+lyden en del;
+#X text 283 378 Her genereres lyden;
+#X text 288 233 Her genereres envelope;
+#X connect 0 0 11 0;
 #X connect 1 0 2 0;
 #X connect 2 0 8 0;
 #X connect 2 1 5 0;
-#X connect 4 0 11 1;
+#X connect 4 0 10 1;
 #X connect 4 0 7 0;
 #X connect 5 0 6 0;
 #X connect 5 1 4 0;
-#X connect 10 0 11 0;
-#X connect 11 0 0 1;
-#X connect 12 0 3 0;
-#X connect 13 0 0 0;
+#X connect 9 0 10 0;
+#X connect 10 0 0 1;
+#X connect 11 0 3 0;
+#X connect 12 0 0 0;
