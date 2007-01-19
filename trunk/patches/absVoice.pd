@@ -4,14 +4,14 @@
 #X obj 68 75 unpack f f;
 #X obj 59 478 throw~ sum;
 #X obj 190 150 nbx 5 14 -1e+37 1e+37 0 0 empty empty volume 0 -6 0
-10 -262144 -1 -1 0 256;
+10 -262144 -1 -1 103 256;
 #X obj 133 110 select 0;
 #X obj 118 150 bng 15 250 50 0 \$0-shut empty noteoff 0 -6 0 12 -262144
 -1 -1;
 #X obj 201 189 bng 15 250 50 0 \$0-kungfu empty noteon 0 -6 0 12 -262144
 -1 -1;
 #X obj 60 112 nbx 5 14 -1e+37 1e+37 0 0 \$0-tone empty tone 0 -6 0
-10 -262144 -1 -1 0 256;
+10 -262144 -1 -1 59 256;
 #N canvas 584 338 999 676 envelope 0;
 #X obj 130 183 vline~;
 #X obj 81 50 r a;
@@ -56,11 +56,11 @@
 #X restore 71 230 pd envelope;
 #X obj 138 288 *~;
 #X obj 60 443 *~ 0.03;
-#N canvas 25 92 999 676 stoej 1;
+#N canvas 25 92 999 676 stoej 0;
 #X obj 67 91 noise~;
 #X obj 89 329 outlet~;
 #X obj 103 129 nbx 5 14 -1e+37 1e+37 0 0 empty \$0-tone empty 0 -6
-0 10 -262144 -1 -1 0 256;
+0 10 -262144 -1 -1 59 256;
 #X obj 116 160 mtof;
 #X obj 451 122 nbx 5 14 -1e+37 1e+37 0 0 empty q Q 0 -6 0 12 -262144
 -1 -1 1281.81 256;

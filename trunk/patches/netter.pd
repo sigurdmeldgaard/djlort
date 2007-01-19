@@ -1,66 +1,96 @@
-#N canvas 25 92 999 676 10;
-#X obj 110 254 print;
-#X obj 168 190 netreceive 3000 1;
-#X obj 320 419 nbx 5 14 -1e+37 1e+37 0 1 modulator-freq freq-before
-freq 0 -6 0 10 -262144 -1 -1 41 256;
-#X obj 320 387 nbx 5 14 -1e+37 1e+37 0 1 modulator-amount amount-before
-amount 0 -6 0 10 -262144 -1 -1 0 256;
-#X obj 210 432 vsl 15 128 0 1 0 1 s s S 0 -8 0 12 -225280 -90881 -1
-0 1;
-#X obj 237 435 vsl 15 128 1 2000 0 1 r r R 0 -8 0 12 -261689 -90881
--1 0 1;
-#X obj 182 431 vsl 15 128 20 20000 1 1 d d D 0 -8 0 12 -228992 -42246
--1 10200 1;
-#X obj 159 429 vsl 15 128 1 20000 1 1 a a A 0 -8 0 12 -257472 -90133
--1 0 0;
-#X obj 283 344 bng 20 250 50 0 empty empty RESET -10 -6 0 10 -262144
+#N canvas 0 0 999 676 10;
+#X obj 30 107 print;
+#X obj 88 43 netreceive 3000 1;
+#X obj 240 272 nbx 5 14 0 500 0 1 modulator-freq freq-before freq 0
+-6 0 10 -262144 -1 -1 0 256;
+#X obj 240 240 nbx 5 14 0 1000 0 1 modulator-amount amount-before amount
+0 -6 0 10 -262144 -1 -1 0 256;
+#X obj 130 285 vsl 15 128 0 1 0 1 s s-before S 0 -8 0 12 -225280 -90881
+-1 5900 1;
+#X obj 155 285 vsl 15 128 1 2000 0 1 r r-before R 0 -8 0 12 -261689
+-90881 -1 2100 1;
+#X obj 102 284 vsl 15 128 20 20000 1 1 d d-before D 0 -8 0 12 -228992
+-42246 -1 7945 1;
+#X obj 81 284 vsl 15 128 1 20000 1 1 a a-before A 0 -8 0 12 -257472
+-90133 -1 0 1;
+#X obj 207 197 bng 20 250 50 0 all-off empty RESET -10 -6 0 10 -262144
 -262144 -1;
-#X obj 319 452 nbx 5 14 10 2000 1 1 q q-before Q 0 -6 0 10 -262144
--1 -1 1281.81 256;
+#X obj 239 305 nbx 5 14 10 2000 1 1 q q-before Q 0 -6 0 10 -262144
+-1 -1 1431.22 256;
 #N canvas 25 92 999 676 output 0;
 #X obj 95 -27 dac~;
 #X obj 95 -52 *~ 0.05;
 #X obj 94 -78 catch~ sum;
 #X connect 1 0 0 0;
+#X connect 1 0 0 1;
 #X connect 2 0 1 0;
 #X coords 0 0 1 1 100 100 0;
-#X restore 308 549 pd output;
-#X obj 212 244 route note control;
-#N canvas 0 0 999 676 control 0;
+#X restore 228 402 pd output;
+#X obj 132 97 route note control;
+#N canvas 0 0 999 676 control 1;
 #X obj 209 128 pack f f f f;
 #X obj 207 94 unpack f f f f;
-#X obj 238 198 pack f;
-#X obj 236 258 s q-before;
-#X obj 236 234 pow 1.5;
-#X obj 198 201 pack f;
+#X obj 256 201 pack f;
+#X obj 256 261 s q-before;
+#X obj 256 237 pow 1.5;
 #X obj 181 36 inlet;
-#X obj 212 160 route 1 7;
-#X obj 144 261 s amount-before;
-#X connect 0 0 7 0;
+#X obj 143 262 s amount-before;
+#X obj 145 210 pack f;
+#X obj 336 261 s a-before;
+#X obj 421 260 s d-before;
+#X obj 501 259 s s-before;
+#X obj 594 260 s r-before;
+#X obj 336 204 pack f;
+#X obj 418 202 pack f;
+#X obj 501 203 pack f;
+#X obj 599 204 pack f;
+#X obj 501 232 / 127;
+#X obj 336 233 pow 1.7;
+#X obj 423 230 pow 1.7;
+#X obj 600 230 * 17;
+#X obj 212 160 route 1 7 50 11 12 13 14;
+#X obj 689 203 pack f;
+#X obj 142 236 * 10;
+#X obj 684 259 s freq-before;
+#X obj 689 230 pow 1.3;
+#X connect 0 0 20 0;
 #X connect 1 0 0 2;
 #X connect 1 1 0 0;
 #X connect 1 2 0 1;
 #X connect 1 3 0 3;
 #X connect 2 0 4 0;
 #X connect 4 0 3 0;
-#X connect 5 0 8 0;
-#X connect 6 0 1 0;
-#X connect 7 0 5 0;
-#X connect 7 1 2 0;
-#X restore 273 299 pd control;
+#X connect 5 0 1 0;
+#X connect 7 0 22 0;
+#X connect 12 0 17 0;
+#X connect 13 0 18 0;
+#X connect 14 0 16 0;
+#X connect 15 0 19 0;
+#X connect 16 0 10 0;
+#X connect 17 0 8 0;
+#X connect 18 0 9 0;
+#X connect 19 0 11 0;
+#X connect 20 0 7 0;
+#X connect 20 1 2 0;
+#X connect 20 2 12 0;
+#X connect 20 3 13 0;
+#X connect 20 4 14 0;
+#X connect 20 5 15 0;
+#X connect 20 6 21 0;
+#X connect 21 0 24 0;
+#X connect 22 0 6 0;
+#X connect 24 0 23 0;
+#X restore 193 152 pd control;
 #N canvas 0 0 999 676 notes 0;
-#X obj 75 116 unpack f f f f;
+#X obj 88 43 inlet;
+#N canvas 0 0 999 676 instrument 0;
 #X obj 72 162 pack f f;
 #X obj 72 255 pack f f f;
 #X obj 72 296 route 1 2 3 4 5 6 7 8 9 10;
 #X obj 73 347 absVoice;
-#X obj 72 215 poly 10 1;
-#X obj 91 65 inlet;
-#X text 308 113 Vi ignorerer foreloebigt 1 og sidste input (channel
-og timestamp);
-#X text 305 209 Her allokeres stemmer med voice-stealing;
-#X text 305 299 Her routes pitch/velocity til den rette stemmegenerator
-;
+#X msg 22 302 0 0;
+#X obj 22 278 bng 15 250 50 0 empty all-off all-off 0 -6 0 8 -262144
+-1 -1;
 #X obj 72 482 absVoice;
 #X obj 73 401 absVoice;
 #X obj 73 374 absVoice;
@@ -70,31 +100,124 @@ og timestamp);
 #X obj 73 537 absVoice;
 #X obj 75 566 absVoice;
 #X obj 77 590 absVoice;
-#X connect 0 1 1 0;
-#X connect 0 2 1 1;
-#X connect 1 0 5 0;
+#X obj 72 215 poly 10 1;
+#X obj 75 116 unpack f f f;
+#X obj 75 71 inlet;
+#X text 305 209 Her allokeres stemmer med voice-stealing;
+#X text 305 299 Her routes pitch/velocity til den rette stemmegenerator
+;
+#X connect 0 0 15 0;
+#X connect 1 0 2 0;
 #X connect 2 0 3 0;
-#X connect 3 0 4 0;
-#X connect 3 1 12 0;
-#X connect 3 2 11 0;
-#X connect 3 3 13 0;
-#X connect 3 4 14 0;
-#X connect 3 5 10 0;
-#X connect 3 6 15 0;
-#X connect 3 7 16 0;
-#X connect 3 8 17 0;
-#X connect 3 9 18 0;
-#X connect 5 0 2 0;
-#X connect 5 1 2 1;
-#X connect 5 2 2 2;
-#X connect 6 0 0 0;
-#X restore 206 298 pd notes;
-#X text 413 243 Vi arbejder med to typer beskeder \, note(on/off) og
+#X connect 2 1 8 0;
+#X connect 2 2 7 0;
+#X connect 2 3 9 0;
+#X connect 2 4 10 0;
+#X connect 2 5 6 0;
+#X connect 2 6 11 0;
+#X connect 2 7 12 0;
+#X connect 2 8 13 0;
+#X connect 2 9 14 0;
+#X connect 4 0 3 0;
+#X connect 4 0 6 0;
+#X connect 4 0 7 0;
+#X connect 4 0 8 0;
+#X connect 4 0 9 0;
+#X connect 4 0 10 0;
+#X connect 4 0 11 0;
+#X connect 4 0 12 0;
+#X connect 4 0 13 0;
+#X connect 4 0 14 0;
+#X connect 5 0 4 0;
+#X connect 15 0 1 0;
+#X connect 15 1 1 1;
+#X connect 15 2 1 2;
+#X connect 16 0 0 0;
+#X connect 16 1 0 1;
+#X connect 17 0 16 0;
+#X restore 72 181 pd instrument;
+#N canvas 0 0 999 676 drums 0;
+#X obj 218 2 inlet;
+#N canvas 0 0 450 300 graph1 0;
+#X array hihat-table 44104 float 0;
+#X coords 0 1.02 44103 -1.02 200 130 1;
+#X restore 552 72 graph;
+#N canvas 0 0 450 300 graph1 0;
+#X array kick-table 44104 float 0;
+#X coords 0 1.02 44103 -1.02 200 130 1;
+#X restore 552 220 graph;
+#N canvas 0 0 450 300 graph1 0;
+#X array snare-table 44104 float 0;
+#X coords 0 1.02 44103 -1.02 200 130 1;
+#X restore 551 389 graph;
+#X obj 202 135 route 35 38 42;
+#X obj 125 545 soundfiler;
+#X obj 125 431 loadbang;
+#X obj 145 368 throw~ sum;
+#X obj 268 301 *~ 8;
+#X obj 229 298 *~ 8;
+#X obj 62 229 tabplay~ kick-table;
+#X obj 128 201 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#X obj 387 233 tabplay~ hihat-table;
+#X obj 217 232 tabplay~ snare-table;
+#X obj 321 182 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#X obj 243 186 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#X msg 125 475 read kick.wav kick-table \, read snare.wav snare-table
+\, read hihat.wav hihat-table \,;
+#X obj 123 301 *~ 8;
+#X obj 219 68 route 0;
+#X obj 223 34 swapem;
+#X obj 214 108 swapem;
+#X connect 0 0 19 0;
+#X connect 4 0 11 0;
+#X connect 4 1 15 0;
+#X connect 4 2 14 0;
+#X connect 6 0 16 0;
+#X connect 8 0 7 0;
+#X connect 9 0 7 0;
+#X connect 10 0 17 0;
+#X connect 11 0 10 0;
+#X connect 12 0 8 0;
+#X connect 13 0 9 0;
+#X connect 14 0 12 0;
+#X connect 15 0 13 0;
+#X connect 16 0 5 0;
+#X connect 17 0 7 0;
+#X connect 18 1 20 0;
+#X connect 19 0 18 0;
+#X connect 20 0 4 0;
+#X restore 235 186 pd drums;
+#X obj 78 71 route 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15;
+#X connect 0 0 3 0;
+#X connect 3 0 1 0;
+#X connect 3 1 1 0;
+#X connect 3 2 1 0;
+#X connect 3 3 1 0;
+#X connect 3 4 1 0;
+#X connect 3 5 1 0;
+#X connect 3 6 1 0;
+#X connect 3 7 1 0;
+#X connect 3 8 1 0;
+#X connect 3 9 2 0;
+#X connect 3 10 1 0;
+#X connect 3 11 1 0;
+#X connect 3 12 1 0;
+#X connect 3 13 1 0;
+#X connect 3 14 1 0;
+#X connect 3 15 1 0;
+#X connect 3 16 1 0;
+#X restore 126 151 pd notes;
+#X text 333 95 Vi arbejder med to typer beskeder \, note(on/off) og
 kontrolbeskeder \, disse behandles i hver sin subpatch;
-#X text 412 336 Hvis man aendrer i absVoice (stemmegeneratoren) og
-gemmer skal man helst resette ved at trykke paa denne bang!;
-#X text 413 184 Her modtager vi beskeder via netvaerket \, foerst kommer
+#X text 333 37 Her modtager vi beskeder via netvaerket \, foerst kommer
 portnr \, saa tcp/udp (0/1);
+#X text 325 190 Hvis man aendrer i absVoice (stemmegeneratoren) og
+gemmer skal man helst resette ved at trykke paa denne bang! Dette bang
+vil desuden aktivere all-off i pd notes \, som slukker alle stemmer.
+;
 #X connect 1 0 0 0;
 #X connect 1 0 11 0;
 #X connect 8 0 2 0;
