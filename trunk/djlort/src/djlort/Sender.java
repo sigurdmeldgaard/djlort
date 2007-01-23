@@ -4,14 +4,24 @@ import javax.sound.midi.*;
 public class Sender implements Receiver{
 
 	Protocol protocol;
+	long first = 0;
 	
 	public Sender(Protocol p){
 		protocol = p;
 	}
-		
+	
+
+	/** Send midi msg over network in real time
+	 * Ignores timeStamp arg, time stamp is taken from system time
+	 * */
 	public void send(MidiMessage msg, long timeStamp){
-		// Send note over udp		
-		MidiEvent event = new MidiEvent(msg, timeStamp);
+		// No reason to send out too large numbers
+		long now = System.currentTimeMillis();
+		if ( first == 0 ) {
+			first = now;
+		}
+		long sysTime =  now-first;
+		MidiEvent event = new MidiEvent(msg, sysTime);
 		String s = eventToString(event);
 		if ( s == null ) return; // Ignore some messages
 		System.out.println("Sending "+s+" to " + protocol);
